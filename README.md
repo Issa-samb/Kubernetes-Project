@@ -26,7 +26,7 @@ The goal is to practice deploying a complete microservices architecture using **
     - Organize configuration files (`values.yaml`) clearly.
 
 1. Deploy on a local Kubernetes Cluster
-    - The final deployment must be done using Helmfile on this machine.
+    - The final deployment must be done locally using Helmfile.
 
 1. Configure an Ingress Controller (NGINX)
     - Install Ingress NGINX in the cluster.
