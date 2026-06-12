@@ -59,3 +59,67 @@ The goal is to practice deploying a complete microservices architecture using **
 - Start by deploying services without Ingress, then add Ingress and TLS once everything works.
 - Use domains like `.nip.io` or `.sslip.io` to test certificates without configuring custom DNS.
 - Validate step by step (deploy one service first, then progressively add others).
+---
+
+## Implémentation
+
+### Architecture
+
+| Service | Langage | Port |
+|---|---|---|
+| frontend | Go | 8080 |
+| cartservice | C# | 8080 |
+| productcatalogservice | Go | 3550 |
+| currencyservice | Node.js | 7000 |
+| paymentservice | Node.js | 50051 |
+| shippingservice | Go | 50051 |
+| emailservice | Python | 8080 |
+| checkoutservice | Go | 5050 |
+| recommendationservice | Python | 8080 |
+| adservice | Java | 9555 |
+| shoppingassistantservice | Python | 8080 |
+| redis | - | 6379 |
+
+### Prérequis
+- Cluster Kubernetes (MicroK8s)
+- Helm v3+
+- Helmfile
+- kubectl
+
+### Installation
+
+#### 1. Créer le secret pour le registry GitLab
+    kubectl create secret docker-registry gitlab-registry \
+      --docker-server=registry.gitlab.unige.ch \
+      --docker-username=VOTRE_USERNAME \
+      --docker-password=VOTRE_TOKEN \
+      --docker-email=VOTRE_EMAIL
+
+#### 2. Déployer avec Helmfile
+    helmfile apply
+
+#### 3. Déployer l'Ingress
+    kubectl apply -f ingress.yaml
+
+#### 4. Déployer cert-manager et le ClusterIssuer
+    kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.0/cert-manager.yaml
+    kubectl apply -f clusterissuer.yaml
+
+### Accès à l'application
+- HTTP: http://frontend.172.26.114.251.nip.io
+- HTTPS: https://frontend.172.26.114.251.nip.io
+
+### Structure du projet
+    kubernetes-project/
+    ├── charts/
+    │   ├── frontend/
+    │   ├── cartservice/
+    │   └── ...
+    ├── helmfile.yaml
+    ├── ingress.yaml
+    ├── clusterissuer.yaml
+    └── README.md
+
+### Charts Helm publiés
+Tous les charts sont publiés sur le GitLab Package Registry :
+https://gitlab.unige.ch/the_final_project/kubernetes-project/-/packages
