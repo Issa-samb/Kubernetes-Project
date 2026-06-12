@@ -1,0 +1,25 @@
+replicaCount: 1
+
+image:
+  repository: registry.gitlab.unige.ch/the_final_project/docker-project/shippingservice
+  tag: "latest"
+  pullPolicy: Always
+
+imagePullSecrets:
+  - name: gitlab-registry
+
+service:
+  type: ClusterIP
+  port: 50051
+
+env:
+  PORT: "50051"
+  DISABLE_PROFILER: "1"
+
+resources:
+  requests:
+    memory: "64Mi"
+    cpu: "50m"
+  limits:
+    memory: "128Mi"
+    cpu: "100m"

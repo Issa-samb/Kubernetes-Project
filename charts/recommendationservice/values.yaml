@@ -1,0 +1,26 @@
+replicaCount: 1
+
+image:
+  repository: registry.gitlab.unige.ch/the_final_project/docker-project/recommendationservice
+  tag: "latest"
+  pullPolicy: Always
+
+imagePullSecrets:
+  - name: gitlab-registry
+
+service:
+  type: ClusterIP
+  port: 8080
+
+env:
+  PORT: "8080"
+  DISABLE_PROFILER: "1"
+  PRODUCT_CATALOG_SERVICE_ADDR: "productcatalogservice:3550"
+
+resources:
+  requests:
+    memory: "64Mi"
+    cpu: "50m"
+  limits:
+    memory: "128Mi"
+    cpu: "100m"

@@ -1,0 +1,58 @@
+repositories: []
+
+releases:
+  - name: redis
+    chart: charts/redis
+
+  - name: cartservice
+    chart: charts/cartservice
+    needs:
+      - redis
+
+  - name: productcatalogservice
+    chart: charts/productcatalogservice
+
+  - name: currencyservice
+    chart: charts/currencyservice
+
+  - name: paymentservice
+    chart: charts/paymentservice
+
+  - name: shippingservice
+    chart: charts/shippingservice
+
+  - name: emailservice
+    chart: charts/emailservice
+
+  - name: recommendationservice
+    chart: charts/recommendationservice
+    needs:
+      - productcatalogservice
+
+  - name: checkoutservice
+    chart: charts/checkoutservice
+    needs:
+      - cartservice
+      - productcatalogservice
+      - currencyservice
+      - paymentservice
+      - shippingservice
+      - emailservice
+
+  - name: adservice
+    chart: charts/adservice
+
+  - name: shoppingassistantservice
+    chart: charts/shoppingassistantservice
+
+  - name: frontend
+    chart: charts/frontend
+    needs:
+      - cartservice
+      - productcatalogservice
+      - currencyservice
+      - recommendationservice
+      - shippingservice
+      - checkoutservice
+      - adservice
+      - shoppingassistantservice
