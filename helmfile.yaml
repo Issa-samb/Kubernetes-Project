@@ -3,34 +3,52 @@ repositories: []
 releases:
   - name: redis
     chart: charts/redis
+    values:
+      - charts/redis/values.yaml
 
   - name: cartservice
     chart: charts/cartservice
+    values:
+      - charts/cartservice/values.yaml
     needs:
       - redis
 
   - name: productcatalogservice
     chart: charts/productcatalogservice
+    values:
+      - charts/productcatalogservice/values.yaml
 
   - name: currencyservice
     chart: charts/currencyservice
+    values:
+      - charts/currencyservice/values.yaml
 
   - name: paymentservice
     chart: charts/paymentservice
+    values:
+      - charts/paymentservice/values.yaml
 
   - name: shippingservice
     chart: charts/shippingservice
+    values:
+      - charts/shippingservice/values.yaml
 
   - name: emailservice
     chart: charts/emailservice
+    values:
+      - charts/emailservice/values.yaml
 
   - name: recommendationservice
     chart: charts/recommendationservice
+    values:
+      - charts/recommendationservice/values.yaml
     needs:
       - productcatalogservice
 
   - name: checkoutservice
     chart: charts/checkoutservice
+    values:
+      - charts/checkoutservice/values.yaml
     needs:
       - cartservice
       - productcatalogservice
@@ -41,12 +59,18 @@ releases:
 
   - name: adservice
     chart: charts/adservice
+    values:
+      - charts/adservice/values.yaml
 
   - name: shoppingassistantservice
     chart: charts/shoppingassistantservice
+    values:
+      - charts/shoppingassistantservice/values.yaml
 
   - name: frontend
     chart: charts/frontend
+    values:
+      - charts/frontend/values.yaml
     needs:
       - cartservice
       - productcatalogservice
