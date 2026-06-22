@@ -10,7 +10,7 @@ The goal is to practice deploying a complete microservices architecture using **
 
 |Home Page|Checkout Screen|
 |-|-|
-|[!\[Store homepage](home/kubernetes-project/docs/img/online-boutique-frontend-1.png)](home/kubernetes-project/docs/img/online-boutique-frontend-1.png)|[!\[Checkout screen](docs/img/online-boutique-frontend-2.png)](docs/img/online-boutique-frontend-2.png)|
+|(kubernetes-project/docs/img/online-boutique-frontend-1.png)|(kubernetes-project/docs/img/online-boutique-frontend-2.png)|
 
 
 
@@ -61,9 +61,9 @@ The goal is to practice deploying a complete microservices architecture using **
 * A TLS certificate obtained via cert-manager and Let's Encrypt ACME staging
 * *(Optional)* Screenshots showing correct operation or `kubectl` command outputs
 
-> ⚠️ \*\*Important\*\*
+> ⚠️ \\\*\\\*Important\\\*\\\*
 >
-> Please note that the Git repository must be part of a \*\*private group\*\* to which only you and \*\*@Ashley.Caselli\*\* have access.  
+> Please note that the Git repository must be part of a \\\*\\\*private group\\\*\\\* to which only you and \\\*\\\*@Ashley.Caselli\\\*\\\* have access.  
 > Refer to the instructions from the Docker project if you missed that.
 
 ## Tips
@@ -105,10 +105,11 @@ The goal is to practice deploying a complete microservices architecture using **
 #### 1\. Créer le secret pour le registry GitLab
 
 &#x20;   kubectl create secret docker-registry gitlab-registry \\
-      --docker-server=registry.gitlab.unige.ch \\
-      --docker-username=VOTRE\_USERNAME \\
-      --docker-password=VOTRE\_TOKEN \\
-      --docker-email=VOTRE\_EMAIL
+--docker-server=registry.gitlab.unige.ch \\
+--docker-username=VOTRE\_USERNAME \\
+--docker-password=VOTRE\_TOKEN \\
+--docker-email=VOTRE\_EMAIL
+
 
 
 #### 2\. Déployer avec Helmfile
@@ -116,15 +117,18 @@ The goal is to practice deploying a complete microservices architecture using **
 &#x20;   helmfile apply
 
 
+
 #### 3\. Déployer l'Ingress
 
 &#x20;   kubectl apply -f ingress.yaml
 
 
+
 #### 4\. Déployer cert-manager et le ClusterIssuer
 
 &#x20;   kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.0/cert-manager.yaml
-    kubectl apply -f clusterissuer.yaml
+kubectl apply -f clusterissuer.yaml
+
 
 
 ### Accès à l'application
@@ -135,14 +139,15 @@ The goal is to practice deploying a complete microservices architecture using **
 ### Structure du projet
 
 &#x20;   kubernetes-project/
-    ├── charts/
-    │   ├── frontend/
-    │   ├── cartservice/
-    │   └── ...
-    ├── helmfile.yaml
-    ├── ingress.yaml
-    ├── clusterissuer.yaml
-    └── README.md
+├── charts/
+│   ├── frontend/
+│   ├── cartservice/
+│   └── ...
+├── helmfile.yaml
+├── ingress.yaml
+├── clusterissuer.yaml
+└── README.md
+
 
 
 ### Charts Helm publiés
