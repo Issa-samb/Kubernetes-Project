@@ -10,7 +10,7 @@ The goal is to practice deploying a complete microservices architecture using **
 
 |Home Page|Checkout Screen|
 |-|-|
-|(kubernetes-project/docs/img/online-boutique-frontend-1.png)|(kubernetes-project/docs/img/online-boutique-frontend-2.png)|
+|(docs/img/online-boutique-frontend-1.png)|(kubernetes-project/docs/img/online-boutique-frontend-2.png)|
 
 
 
