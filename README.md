@@ -8,10 +8,9 @@ The goal is to practice deploying a complete microservices architecture using **
 
 ## Application Preview
 
-|Home Page|Checkout Screen|
-|-|-|
-|(docs/img/online-boutique-frontend-1.png)|(kubernetes-project/docs/img/online-boutique-frontend-2.png)|
-
+| Home Page | Checkout Screen |
+|-----------|----------------|
+| ![Home](docs/img/online-boutique-frontend-1.png) | ![Checkout](docs/img/online-boutique-frontend-2.png) |
 
 
 ## Tasks
